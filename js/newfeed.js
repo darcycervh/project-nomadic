@@ -31,7 +31,6 @@ window.addEventListener('load', function(event) {
   var post = document.getElementById('post');
   var btnSave = document.getElementById('btnSave');
 
-
   post.addEventListener('input', function(event) {
     console.log(event.target.value); // -- obtengo el valor textual de mi target
   });
@@ -50,5 +49,18 @@ window.addEventListener('load', function(event) {
     // console.log(name.value);
     post.value = '';
   });
+  
+  // -------------  añadiendo imgs --------------
+  $('#f').on('change', function(ev) {
+    var f = ev.target.files[0];
+    var fr = new FileReader();
+    
+    fr.onload = function(ev2) {
+        console.dir(ev2);
+        $('#i').attr('src', ev2.target.result);
+    };
+    
+    fr.readAsDataURL(f);
+ });
 });
 
